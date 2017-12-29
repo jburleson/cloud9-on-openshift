@@ -6,8 +6,8 @@ MAINTAINER Capuccino <chinodesuuu@gmail.com>
 ADD run_container.sh /tmp/
 RUN /tmp/run_container.sh
 
-WORKDIR /workspace
-VOLUME /workspace
+# WORKDIR /workspace
+# VOLUME /workspace
 
 EXPOSE 8181
 
