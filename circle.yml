@@ -6,7 +6,6 @@ jobs:
   build:
     docker:
       - image: chinodesuuu/ci-amethyst:latest
-    working_directory: src
     steps:
       - setup_remote_docker
       - checkout
