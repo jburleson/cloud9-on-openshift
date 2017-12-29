@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Doing this in a separate script lets us do it step by step while using a
 # single docker layer.
