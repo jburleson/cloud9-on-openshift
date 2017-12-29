@@ -19,6 +19,7 @@ ENV HOME "/home/user/"
 
 ADD passwd_template /tmp/
 ADD run_usercommand.sh /tmp/
+RUN chmod +x /tmp/run_usercommand.sh
 
 USER 1000
 CMD ["/tmp/run_usercommand.sh"]
