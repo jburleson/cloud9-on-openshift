@@ -7,8 +7,7 @@ notify:
 jobs:
   build:
     docker:
-      - image: chinodesuuu/ci-amethyst:latest
-    parallelism: 2  
+      - image: chinodesuuu/ci-amethyst:latest  
     steps:
       - setup_remote_docker
       - checkout
