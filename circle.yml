@@ -45,7 +45,7 @@ jobs:
           name: Docker Push (Fedora 27)
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f27
           
-      - run:
-          name: Docker Push (Fedora 27 - No Volume)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f27-novolume
+#      - run:
+#          name: Docker Push (Fedora 27 - No Volume)
+#          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f27-novolume
           
