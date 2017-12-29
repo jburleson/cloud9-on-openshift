@@ -4,7 +4,6 @@ MAINTAINER Capuccino <chinodesuuu@gmail.com>
 # Use a script to configure the container. This way we can
 # split up the operations and do it all in a single layer.
 ADD run_container.sh /tmp/
-RUN chmod +x /tmp/run_container.sh
 RUN /tmp/run_container.sh
 
 WORKDIR /workspace
