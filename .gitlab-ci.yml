@@ -26,7 +26,7 @@ build_fedora_25_novolume:
   stage: build
   script:
     - docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume
-    - docker push chinodesuuu/c9:f25
+    - docker push chinodesuuu/c9:f25-novolume
 
 clone_fedora_25_novolume:
   stage: sync
