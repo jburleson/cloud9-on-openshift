@@ -5,7 +5,7 @@ notify:
 jobs:
   build:
     docker:
-      - image: chinodesuuu/ci-amethyst:latest
+      - image: docker:latest
     steps:
       - setup_remote_docker
       - checkout
