@@ -3,7 +3,7 @@ services:
   - docker:dind
 
 before_script:
-  - docker login -u chinodesuuu -p $DOCKER_PASSWORD
+  - docker login -u chinodesuuu -p $DOCKER_PASS
 
 stages:
   - build
