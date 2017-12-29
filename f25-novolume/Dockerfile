@@ -3,9 +3,9 @@ MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
 # Use a script to configure the container. This way we can
 # split up the operations and do it all in a single layer.
+RUN su root
 ADD run_container.sh /tmp/
 RUN /tmp/run_container.sh
-
 
 EXPOSE 8181
 
