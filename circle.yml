@@ -6,6 +6,7 @@ jobs:
   build:
     docker:
       - image: chinodesuuu/ci-amethyst:latest
+    parallelism: 3  
     steps:
       - setup_remote_docker
       - checkout
