@@ -14,6 +14,7 @@ ENV USERNAME ""
 ENV PASSWORD ""
 ENV HOME "/home/user/"
 
+
 ADD passwd_template /tmp/
 ADD run_usercommand.sh /tmp/
 
