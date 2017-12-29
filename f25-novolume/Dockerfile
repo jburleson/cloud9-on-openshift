@@ -6,7 +6,6 @@ MAINTAINER Capuccino <chinodesuuu@gmail.com>
 ADD run_container.sh /tmp/
 RUN /tmp/run_container.sh
 
-WORKDIR /workspace
 
 EXPOSE 8181
 

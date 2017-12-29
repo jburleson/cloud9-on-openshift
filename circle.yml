@@ -20,9 +20,9 @@ jobs:
       - run:
           name: Docker Build (Fedora 25)
           command: docker build -t chinodesuuu/c9:f25 ./f25
-#      - run:
-#          name: Docker Build (Fedora 25 - No Volume)
-#          command: docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume/
+      - run:
+          name: Docker Build (Fedora 25 - No Volume)
+          command: docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume/
       - run:
           name: Docker Build (Fedora 27)
           command: docker build -t chinodesuuu/c9:f27 ./f27/
