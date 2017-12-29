@@ -30,7 +30,7 @@ cd /usr/src && \
    ./configure --enable-optimizations && \
    make altinstall && \
    rm -rf /usr/src/Python-3.6.3.tgz && \
-   /usr/bin/python3.6 -V
+   /usr/bin/python3 -V
 
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
