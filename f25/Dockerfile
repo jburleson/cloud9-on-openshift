@@ -1,5 +1,5 @@
 FROM fedora:25
-MAINTAINER Gerard Braad <me@gbraad.nl>
+MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
 # Use a script to configure the container. This way we can
 # split up the operations and do it all in a single layer.
