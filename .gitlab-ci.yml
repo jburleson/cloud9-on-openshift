@@ -27,13 +27,26 @@ build_fedora_25_novolume:
   script:
     - docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume
     - docker push chinodesuuu/c9:f25-novolume
-
+    
 clone_fedora_25_novolume:
   stage: sync
   script:
     - docker pull chinodesuuu/c9:f25-novolume
     - docker tag chinodesuuu/c9:f25-novolume chinodesuuu/c9:f25-novolume
     - docker push chinodesuuu/c9:f25-novolume
+    
+build_fedora_26_novolume:
+  stage: build
+  script:
+    - docker build -t chinodesuuu/c9:f26-novolume ./f26-novolume
+    - docker push chinodesuuu/c9:f26-novolume
+
+clone_fedora_26:
+  stage: sync
+  script:
+    - docker pull chinodesuuu/c9:f26-novolume
+    - docker tag chinodesuuu/c9:f26-novolume chinodesuuu/c9:f26-novolume
+    - docker push chinodesuuu/c9:f26-novolume
 
 build_fedora_27:
   stage: build
@@ -47,6 +60,7 @@ clone_fedora_27:
     - docker pull chinodesuuu/c9:f27
     - docker tag chinodesuuu/c9:f27 chinodesuuu/c9:f27
     - docker push chinodesuuu/c9:f27
+
 
 #build_fedora_27_novolume:
 #  stage: build
