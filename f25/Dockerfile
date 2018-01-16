@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:26
 MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
 # Use a script to configure the container. This way we can

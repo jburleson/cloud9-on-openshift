@@ -4,7 +4,7 @@
 # single docker layer.
 
 # Install dependencies
-dnf install -y \
+yum install -y \
     curl \
     wget \
     python2-dnf \
@@ -58,3 +58,6 @@ find /home/user -type d -exec chmod g+x {} +
 # Clean up
 dnf clean all
 rm /tmp/install.yml
+
+#Update packages
+yum -y update
