@@ -1,5 +1,4 @@
 version: 2
-
 notify:
  webhooks:
    - url: https://claraio-circledisc.herokuapp.com/hooks/circleci
@@ -37,5 +36,75 @@ jobs:
       # This one is only run for testing purposes. This cannot run on OpenShift Online   
       - run:
          name: Docker Build (Fedora 27 - No Volume)
-         command: docker build -t chinodesuuu/c9:f27-novolume ./f27-novolume
-         
+         command: docker build -t chinodesuuu/c9:f27-novolume ./f27-novolume          
+  deploy:
+    docker:
+      - image: chinodesuuu/ci-amethyst:latest
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Install Docker client
+          command: |
+            set -x
+            VER="17.05.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin      
+      - run:
+          name: Docker Pull (Fedora 25)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f25
+      - run:
+          name: Docker Pull (Fedora 25 - No Volume)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f25-novolume
+      - run:
+          name: Docker Pull (Fedora 26)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f26
+      - run:
+          name: Docker Pull (Fedora 26 - No Volume)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f26-novolume
+      - run:
+          name: Docker Pull (Fedora 27)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f27        
+      - run:
+          name: Docker Push (Fedora 25)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f25
+      - run:
+          name: Docker Push (Fedora 25 - No Volume)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f25-novolume
+      - run:
+          name: Docker Push (Fedora 26)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f26
+      - run:
+          name: Docker Push (Fedora 26 - No Volume)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f26-novolume          
+      - run:
+          name: Docker Push (Fedora 27)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f27          
+                    
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
+      - deploy:
+          requires:
+             - build
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "0 1* * *"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - build
+      - deploy:
+          requires:
+             - build
+  build-n-deploy: 
+    jobs:
+      - build
+      - deploy:
+          requires:
+             - build         
