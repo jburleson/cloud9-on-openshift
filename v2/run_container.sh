@@ -5,13 +5,11 @@
 
 # Install dependencies
 dnf install -y \
-    curl \
     wget \
     python2-dnf \
     ansible \
     make \
     cmake \
-    tar \
     git \
     which \
     nodejs \
