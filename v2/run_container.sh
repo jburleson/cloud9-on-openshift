@@ -5,7 +5,7 @@
 
 # Install dependencies
 dnf -y update && \
-dnf -y install \
+dnf --enablerepo=updates-testing -y install \
     wget \
     python2-dnf \
     ansible \

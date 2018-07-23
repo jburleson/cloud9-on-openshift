@@ -5,7 +5,7 @@
 
 # Install dependencies
 dnf -y update && \
-dnf -y install \
+dnf --enablerepo=updates-testing -y install \
     wget \
     python2-dnf \
     ansible \
@@ -22,6 +22,7 @@ dnf -y install \
     sudo \
     nss_wrapper \
     gettext;
+
 
 # apprently this is the only way we can install Python 3.6
 cd /usr/src && \
