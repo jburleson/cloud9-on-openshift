@@ -13,11 +13,13 @@ ENV USERNAME ""
 ENV PASSWORD ""
 ENV HOME "/home/user/"
 
+ADD run_usercommand.sh /tmp/
 ADD entrypoint /home/user
 RUN chgrp -R 0 /home/user && \
     chmod a+x /home/user/entrypoint && \
     chmod -R g=u /home/user && \
     chmod g=u /etc/passwd;
+RUN chmod +x /tmp/run_usercommand.sh
 
 ENV C9_USERNAME ""
 ENV C9_PASSWORD ""
