@@ -55,10 +55,6 @@ chown user:root /workspace
 chown -R user:root /opt/c9sdk
 chmod -R g+rw /opt/c9sdk
 chmod -R g+rw /home/user
-chgrp -R 0 /home/user && \
-chmod a+x /home/user/entrypoint && \
-chmod -R g=u /home/user && \
-chmod g=u /etc/passwd;
 find /home/user -type d -exec chmod g+x {} +
 
 # Clean up
