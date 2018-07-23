@@ -62,8 +62,8 @@ mkdir -p /workspace
 chown user:root /workspace
 
 # allow to run on openshift
-chown -R user:root /opt/c9sdk
-chmod -R g+rw /opt/c9sdk
+chown -R user:root /opt/cloud9
+chmod -R g+rw /opt/cloud9
 chmod -R g+rw /home/user
 chgrp -R 0 /home/user && \
 chmod a+x /home/user/entrypoint && \
