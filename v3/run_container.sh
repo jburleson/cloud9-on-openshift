@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 # Doing this in a separate script lets us do it step by step while using a
 # single docker layer.
 
@@ -14,6 +15,8 @@ dnf -y install \
     cmake \
     git \
     which \
+    python2 \
+    python3 \
     nodejs \
     clang \
     openssl-devel \
@@ -22,7 +25,6 @@ dnf -y install \
     nss_wrapper \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
-
 
 # apprently this is the only way we can install Python 3.6
 cd /usr/src && \

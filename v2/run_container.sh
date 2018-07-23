@@ -14,6 +14,8 @@ dnf -y install \
     cmake \
     git \
     which \
+    python2 \
+    python3 \
     nodejs \
     clang \
     openssl-devel \
@@ -22,16 +24,7 @@ dnf -y install \
     nss_wrapper \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
-
-# apprently this is the only way we can install Python 3.6
-cd /usr/src && \
-   wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
-   tar xzf Python-3.6.3.tgz && \
-   cd Python-3.6.3 && \
-   ./configure --enable-optimizations && \
-   make altinstall && \
-   rm -rf /usr/src/Python-3.6.3.tgz && \
-   /usr/bin/python3 -V
+    
 # Add NVM for Node.js
 curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
 
