@@ -48,7 +48,7 @@ cd /opt && \
    npm i --save;
 cd .. && \
    git clone https://github.com/exsilium/cloud9-plugin-ungit.git && \
-   git clone git clone https://github.com/exsilium/mungit.git && \
+   git clone https://github.com/exsilium/mungit.git && \
    cd mungit && && npm install -g grunt-cli && npm install && grunt && \
    printf '{ "users": { "test": "test" }}' | tee /home/app/.ungitrc && \
 cd .. && \
