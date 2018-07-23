@@ -4,6 +4,7 @@
 # single docker layer.
 
 # Install dependencies
+# Install dependencies
 dnf install -y \
     curl \
     wget \
@@ -12,9 +13,11 @@ dnf install -y \
     make \
     cmake \
     tar \
+    git \
     which \
     nodejs \
     gcc \
+    g++ \
     clang \
     openssl-devel \
     bzip2-devel \

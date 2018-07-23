@@ -12,6 +12,7 @@ dnf install -y \
     make \
     cmake \
     tar \
+    git \
     which \
     nodejs \
     gcc \
