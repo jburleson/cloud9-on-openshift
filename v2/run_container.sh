@@ -5,7 +5,7 @@
 
 # Install dependencies
 dnf -y update && \
-yum -y install \
+dnf -y install \
     wget \
     python2-dnf \
     ansible \
@@ -15,7 +15,7 @@ yum -y install \
     which \
     nodejs \
     gcc \
-    g++ \
+    gcc-g++ \
     clang \
     openssl-devel \
     bzip2-devel \
