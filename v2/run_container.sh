@@ -38,7 +38,10 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
 echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
-chmod 0440 /etc/sudoers.d/user
+chmod 0440 /etc/sudoers.d/user;
+
+cp -vR /root/.bashrc /home/user && \
+chown -R user:user /home/user/.bashrc
 
 # c9 V2 install
 cd /opt && \
