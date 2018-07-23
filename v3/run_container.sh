@@ -4,15 +4,13 @@
 # single docker layer.
 
 # Install dependencies
-# Install dependencies
-dnf install -y \
-    curl \
+dnf -y update && \
+dnf -y install \
     wget \
     python2-dnf \
     ansible \
     make \
     cmake \
-    tar \
     git \
     which \
     nodejs \

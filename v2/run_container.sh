@@ -4,8 +4,8 @@
 # single docker layer.
 
 # Install dependencies
-dnf update && \
-dnf install -y \
+dnf -y update && \
+dnf -y install \
     wget \
     python2-dnf \
     ansible \
