@@ -27,7 +27,7 @@ ENV C9_PASSWORD ""
 VOLUME ["/workspace"]
 USER 10001
 ENTRYPOINT ["/home/user/entrypoint"]
-CMD ["cd", "/opt/cloud9" , "&&", "bash", "bin/cloud9.sh", "-w" , "/workspace", "-l", "0.0.0.0", "-p", "8181", "--username", "$C9_USERNAME", "--password", "$C9_PASSWORD"]
+CMD ["/tmp/run_usercommand.sh"]
 
 # Labels for Kubernetes, OpenShift and Atomic
 LABEL io.k8s.description="A powerful IDE for the cloud under your control! C9 SDK based on CentOS, Fedora or Ubuntu" \
