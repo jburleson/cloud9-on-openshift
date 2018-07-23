@@ -14,7 +14,6 @@ ENV PASSWORD ""
 ENV HOME "/home/user/"
 
 ADD entrypoint /home/user
-RUN chmod +x /tmp/run_usercommand.sh
 
 ENV C9_USERNAME ""
 ENV C9_PASSWORD ""
