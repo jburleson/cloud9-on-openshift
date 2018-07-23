@@ -4,6 +4,7 @@
 # single docker layer.
 
 # Install dependencies
+dnf update && \
 dnf install -y \
     wget \
     python2-dnf \
