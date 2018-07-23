@@ -20,7 +20,7 @@ RUN chmod +x /tmp/run_usercommand.sh
 ENV C9_USERNAME ""
 ENV C9_PASSWORD ""
 
-VOLUME["/workspace"]
+VOLUME ["/workspace"]
 USER 10001
 ENTRYPOINT ["/home/user/entrypoint"]
 CMD ["cd", "/opt/cloud9" , "&&", "bash", "bin/cloud9.sh", "-w" , "/workspace", "-l", "0.0.0.0", "-p", "8181", "--username", "$C9_USERNAME", "--password", "$C9_PASSWORD"]

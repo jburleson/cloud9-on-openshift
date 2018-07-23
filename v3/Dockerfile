@@ -17,7 +17,7 @@ ADD run_usercommand.sh /tmp/
 ADD entrypoint /home/user
 RUN chmod +x /tmp/run_usercommand.sh
 
-VOLUME["/workspace"]
+VOLUME ["/workspace"]
 USER 10001
 ENTRYPOINT ["/home/user/entrypoint"]
 CMD ["/tmp/run_usercommand.sh"]
