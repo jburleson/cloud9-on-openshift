@@ -13,7 +13,6 @@ ENV USERNAME ""
 ENV PASSWORD ""
 ENV HOME "/home/user/"
 
-ADD run_usercommand.sh /tmp/
 ADD entrypoint /home/user
 RUN chmod +x /tmp/run_usercommand.sh
 
