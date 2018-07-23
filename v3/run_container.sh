@@ -5,7 +5,7 @@
 
 # Install dependencies
 dnf -y update && \
-dnf -y install \
+yum -y install \
     wget \
     python2-dnf \
     ansible \
