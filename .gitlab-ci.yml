@@ -7,83 +7,21 @@ before_script:
 
 stages:
   - build
-  - sync
+  - push
 
-build_fedora_25:
+build_c9_v2:
   stage: build
   script:
-    - docker build -t chinodesuuu/c9:f25 ./f25
-    - docker push chinodesuuu/c9:f25
-
-clone_fedora_25:
-  stage: sync
-  script:
-    - docker pull chinodesuuu/c9:f25
-    - docker tag chinodesuuu/c9:f25 chinodesuuu/c9:f25
-    - docker push chinodesuuu/c9:f25
-
-build_fedora_25_novolume:
+    - docker build -t chinodesuuu/c9:v2 ./v2
+build_c9_v3:
   stage: build
   script:
-    - docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume
-    - docker push chinodesuuu/c9:f25-novolume
-    
-clone_fedora_25_novolume:
-  stage: sync
+    - docker build -t chinodesuuu/c9:v3 ./v3
+push_c9_v2:
+  stage: push
   script:
-    - docker pull chinodesuuu/c9:f25-novolume
-    - docker tag chinodesuuu/c9:f25-novolume chinodesuuu/c9:f25-novolume
-    - docker push chinodesuuu/c9:f25-novolume
-
-build_fedora_26:
-  stage: build
+    - docker push chinodesuuu/c9:v2
+push_c9_v3:
+  stage: push
   script:
-    - docker build -t chinodesuuu/c9:f26 ./f26
-    - docker push chinodesuuu/c9:f26
-
-clone_fedora_25:
-  stage: sync
-  script:
-    - docker pull chinodesuuu/c9:f26
-    - docker tag chinodesuuu/c9:f26 chinodesuuu/c9:f26
-    - docker push chinodesuuu/c9:f26
-    
-build_fedora_26_novolume:
-  stage: build
-  script:
-    - docker build -t chinodesuuu/c9:f26-novolume ./f26-novolume
-    - docker push chinodesuuu/c9:f26-novolume
-
-clone_fedora_26:
-  stage: sync
-  script:
-    - docker pull chinodesuuu/c9:f26-novolume
-    - docker tag chinodesuuu/c9:f26-novolume chinodesuuu/c9:f26-novolume
-    - docker push chinodesuuu/c9:f26-novolume
-
-build_fedora_27:
-  stage: build
-  script:
-    - docker build -t chinodesuuu/c9:f27 ./f27
-    - docker push chinodesuuu/c9:f27
-
-clone_fedora_27:
-  stage: sync
-  script:
-    - docker pull chinodesuuu/c9:f27
-    - docker tag chinodesuuu/c9:f27 chinodesuuu/c9:f27
-    - docker push chinodesuuu/c9:f27
-
-
-#build_fedora_27_novolume:
-#  stage: build
-#  script:
-#    - docker build -t chinodesuuu/c9:f27-novolume ./f27-novolume
-#    - docker push chinodesuuu/c9:f27-novolume
-
-#clone_fedora_27_novolume:
-#  stage: sync
-#  script:
-#    - docker pull chinodesuuu/c9:f27-novolume
-#    - docker tag chinodesuuu/c9:f27-novolume chinodesuuu/c9:f25-novolume
-#    - docker push chinodesuuu/c9:f27-novolume    
+    - docker push chinodesuuu/c9:v3

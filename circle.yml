@@ -19,24 +19,12 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run:
-          name: Docker Build (Fedora 25)
-          command: docker build -t chinodesuuu/c9:f25 ./f25
+          name: Docker Build (Cloud9 V2)
+          command: docker build -t chinodesuuu/c9:v2 ./v2
       - run:
-         name: Docker Build (Fedora 25 - No Volume)
-         command: docker build -t chinodesuuu/c9:f25-novolume ./f25-novolume
-      - run:
-          name: Docker Build (Fedora 26)
-          command: docker build -t chinodesuuu/c9:f26 ./f26
-      - run:
-         name: Docker Build (Fedora 26 - No Volume)
-         command: docker build -t chinodesuuu/c9:f26-novolume ./f26-novolume         
-      - run:
-         name: Docker Build (Fedora 27)
-         command: docker build -t chinodesuuu/c9:f27 ./f27
-      # This one is only run for testing purposes. This cannot run on OpenShift Online   
-      - run:
-         name: Docker Build (Fedora 27 - No Volume)
-         command: docker build -t chinodesuuu/c9:f27-novolume ./f27-novolume          
+         name: Docker Build (AWS Cloud9 SDK (Previously Cloud9 V3 SDK))
+         command: docker build -t chinodesuuu/c9:v3 ./v3
+                   
   deploy:
     docker:
       - image: chinodesuuu/ci-amethyst:latest
@@ -51,35 +39,17 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin      
       - run:
-          name: Docker Pull (Fedora 25)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f25
+          name: Docker Build (Cloud9 V2)
+          command: docker build -t chinodesuuu/c9:v2 ./v2
       - run:
-          name: Docker Pull (Fedora 25 - No Volume)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f25-novolume
+         name: Docker Build (AWS Cloud9 SDK (Previously Cloud9 V3 SDK))
+         command: docker build -t chinodesuuu/c9:v3 ./v3
       - run:
-          name: Docker Pull (Fedora 26)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f26
+          name: Docker Push (Cloud9 V2)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:v2          
       - run:
-          name: Docker Pull (Fedora 26 - No Volume)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f26-novolume
-      - run:
-          name: Docker Pull (Fedora 27)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/c9:f27        
-      - run:
-          name: Docker Push (Fedora 25)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f25
-      - run:
-          name: Docker Push (Fedora 25 - No Volume)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f25-novolume
-      - run:
-          name: Docker Push (Fedora 26)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f26
-      - run:
-          name: Docker Push (Fedora 26 - No Volume)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f26-novolume          
-      - run:
-          name: Docker Push (Fedora 27)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:f27          
+          name: Docker Push (AWS Cloud9 SDK (Previously Cloud9 V3 SDK))
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/c9:v3          
                     
 
 workflows:
