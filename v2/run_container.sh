@@ -34,7 +34,7 @@ echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
 chmod 0440 /etc/sudoers.d/user;
 
 cp -vR /root/.bashrc /home/user && \
-chown -R user:user /home/user/.bashrc
+chown -R 1000:1000 /home/user/.bashrc
 
 # c9 V2 install
 cd /opt && \
