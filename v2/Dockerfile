@@ -14,6 +14,10 @@ ENV PASSWORD ""
 ENV HOME "/home/user/"
 
 ADD entrypoint /home/user
+RUN chgrp -R 0 /home/user && \
+    chmod a+x /home/user/entrypoint && \
+    chmod -R g=u /home/user && \
+    chmod g=u /etc/passwd;
 
 ENV C9_USERNAME ""
 ENV C9_PASSWORD ""
