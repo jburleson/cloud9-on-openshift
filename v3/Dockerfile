@@ -1,13 +1,11 @@
-FROM fedora:26
+FROM fedora:27
 MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
 # Use a script to configure the container. This way we can
 # split up the operations and do it all in a single layer.
 ADD run_container.sh /tmp/
+RUN chmod +x /tmp/run_container.sh
 RUN /tmp/run_container.sh
-
-WORKDIR /workspace
-VOLUME /workspace
 
 EXPOSE 8181
 
@@ -15,11 +13,18 @@ ENV USERNAME ""
 ENV PASSWORD ""
 ENV HOME "/home/user/"
 
-
-ADD passwd_template /tmp/
 ADD run_usercommand.sh /tmp/
+ADD entrypoint /home/user
+ADD entrypoint /home/user
+RUN chgrp -R 0 /home/user && \
+    chmod a+x /home/user/entrypoint && \
+    chmod -R g=u /home/user && \
+    chmod g=u /etc/passwd;
+RUN chmod +x /tmp/run_usercommand.sh
 
-USER 1000
+VOLUME ["/workspace"]
+USER 10001
+ENTRYPOINT ["/home/user/entrypoint"]
 CMD ["/tmp/run_usercommand.sh"]
 
 # Labels for Kubernetes, OpenShift and Atomic

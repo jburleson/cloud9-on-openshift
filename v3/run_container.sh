@@ -1,26 +1,30 @@
 #!/bin/sh
 
+
 # Doing this in a separate script lets us do it step by step while using a
 # single docker layer.
 
 # Install dependencies
-dnf install -y \
-    curl \
+dnf -y install "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" && \ 
+dnf -y update && \
+dnf -y install \
     wget \
     python2-dnf \
     ansible \
     make \
     cmake \
-    tar \
+    git \
     which \
+    python2 \
+    python3 \
     nodejs \
-    gcc \
     clang \
     openssl-devel \
     bzip2-devel \
     sudo \
     nss_wrapper \
-    gettext
+    gettext && \
+    dnf group install "C Development Tools and Libraries" -y;
 
 # apprently this is the only way we can install Python 3.6
 cd /usr/src && \
@@ -57,4 +61,3 @@ find /home/user -type d -exec chmod g+x {} +
 
 # Clean up
 dnf clean all
-rm /tmp/install.yml
