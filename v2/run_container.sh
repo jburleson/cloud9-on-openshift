@@ -40,7 +40,7 @@ chown -R 1000:1000 /home/user/.bashrc
 cd /opt && \
    git clone https://github.com/exsilium/cloud9 && \
    cd cloud9 && \
-   npm i --save;
+   npm i --save && \
 cd .. && \
    git clone https://github.com/exsilium/cloud9-plugin-ungit.git && \
    git clone https://github.com/exsilium/mungit.git && \
