@@ -8,7 +8,7 @@ RUN apt-get -y install \
 
 RUN git clone https://github.com/exsilium/cloud9 && \
     cd cloud9 && \
-    npm install && \
+    npm install --unsafe-perm && \
     cd .. && \
     git clone https://github.com/exsilium/cloud9-plugin-ungit.git && \
     git clone https://github.com/exsilium/mungit.git && \
