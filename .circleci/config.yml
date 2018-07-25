@@ -30,6 +30,7 @@ jobs:
       - image: chinodesuuu/ci-amethyst:latest
     steps:
       - setup_remote_docker
+      - checkout
       - run:
           name: Install Docker client
           command: |
