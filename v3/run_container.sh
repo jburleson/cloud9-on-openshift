@@ -26,16 +26,6 @@ dnf -y install \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
 
-# apprently this is the only way we can install Python 3.6
-cd /usr/src && \
-   wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
-   tar xzf Python-3.6.3.tgz && \
-   cd Python-3.6.3 && \
-   ./configure --enable-optimizations && \
-   make altinstall && \
-   rm -rf /usr/src/Python-3.6.3.tgz && \
-   /usr/bin/python3 -V
-
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
 echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user

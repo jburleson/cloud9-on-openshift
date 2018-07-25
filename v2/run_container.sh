@@ -16,7 +16,6 @@ dnf -y install \
     which \
     python2 \
     python3 \
-    nodejs \
     clang \
     openssl-devel \
     bzip2-devel \
@@ -26,7 +25,11 @@ dnf -y install \
     dnf group install "C Development Tools and Libraries" -y;
     
 # Add NVM for Node.js
-curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+# To prevent API incompatibilities
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+dnf install -y nodejs
 
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
@@ -35,19 +38,6 @@ chmod 0440 /etc/sudoers.d/user;
 
 cp -vR /root/.bashrc /home/user && \
 chown -R 1000:1000 /home/user/.bashrc
-
-# c9 V2 install
-cd /opt && \
-   git clone https://github.com/exsilium/cloud9 && \
-   cd cloud9 && \
-   npm i --save;
-cd .. && \
-   git clone https://github.com/exsilium/cloud9-plugin-ungit.git && \
-   git clone https://github.com/exsilium/mungit.git && \
-   cd mungit && npm install -g grunt-cli && npm install && grunt && \
-   printf '{ "users": { "test": "test" }}' | tee /home/user/.ungitrc && \
-cd .. && \
-   ln -s /opt/cloud9-plugin-ungit /opt/cloud9/plugins-client/ext.ungit;
 
 # Allow user installs in /opt as root
 chmod g+rw /opt
@@ -65,3 +55,4 @@ find /home/user -type d -exec chmod g+x {} +
 
 # Clean up
 dnf clean all
+printf '{ "users": { "test": "test" }}' | tee /home/user/.ungitrc
