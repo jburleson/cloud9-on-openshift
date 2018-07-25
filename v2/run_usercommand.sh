@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ls cloud9
 bash cloud9/bin/cloud9.sh \ 
      -w /workspace 
      -l 0.0.0.0 
