@@ -21,7 +21,7 @@ RUN git clone https://github.com/exsilium/cloud9 && \
 FROM fedora:27
 MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
-COPY --from=base /opt /opt
+COPY --from=build /opt /opt
 
 ADD run_container.sh /tmp/
 RUN chmod +x /tmp/run_container.sh
