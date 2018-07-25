@@ -36,19 +36,6 @@ chmod 0440 /etc/sudoers.d/user;
 cp -vR /root/.bashrc /home/user && \
 chown -R 1000:1000 /home/user/.bashrc
 
-# c9 V2 install
-cd /opt && \
-   git clone https://github.com/exsilium/cloud9 && \
-   cd cloud9 && \
-   npm install && \
-   cd .. && \
-   git clone https://github.com/exsilium/cloud9-plugin-ungit.git && \
-   git clone https://github.com/exsilium/mungit.git && \
-   cd mungit && npm install -g grunt-cli && npm install && grunt && \
-   printf '{ "users": { "test": "test" }}' | tee /home/user/.ungitrc && \
-   cd .. && \
-   ln -s /opt/cloud9-plugin-ungit /opt/cloud9/plugins-client/ext.ungit;
-
 # Allow user installs in /opt as root
 chmod g+rw /opt
 chgrp root /opt
