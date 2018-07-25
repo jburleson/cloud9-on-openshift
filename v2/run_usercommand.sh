@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bash bin/cloud9.sh \ 
+bash cloud9/bin/cloud9.sh \ 
      -w /workspace 
      -l 0.0.0.0 
      -p 8181 
