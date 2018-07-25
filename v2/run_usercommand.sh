@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [-z "$C9_PASSWORD" ] && [-z "$C9_USERNAME"]; then
    echo "[warn] Starting Cloud9 Without Authorization is highly discouraged. Set them from the C9_USERNAME and C9_USERNAME variables!"
