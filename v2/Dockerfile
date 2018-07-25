@@ -41,6 +41,7 @@ ENV C9_USERNAME ""
 ENV C9_PASSWORD ""
 VOLUME ["/workspace"]
 USER 10001
+WORKDIR /opt
 ENTRYPOINT ["/home/user/entrypoint"]
 CMD ["/tmp/run_usercommand.sh"]
 
