@@ -16,7 +16,6 @@ dnf -y install \
     which \
     python2 \
     python3 \
-    nodejs \
     clang \
     openssl-devel \
     bzip2-devel \
@@ -26,7 +25,11 @@ dnf -y install \
     dnf group install "C Development Tools and Libraries" -y;
     
 # Add NVM for Node.js
-curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+# To prevent API incompatibilities
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+dnf install -y nodejs
 
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
