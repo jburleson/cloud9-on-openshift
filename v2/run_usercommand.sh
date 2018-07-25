@@ -1,6 +1,5 @@
 #!/bin/sh
 
-cd /opt/cloud9 && \
 bash bin/cloud9.sh \ 
      -w /workspace 
      -l 0.0.0.0 
