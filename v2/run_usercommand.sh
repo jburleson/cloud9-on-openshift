@@ -1,6 +1,6 @@
 #!/bin/sh
 ls cloud9
-bash cloud9/bin/cloud9.sh \ 
+node cloud9/server.js \ 
      -w /workspace 
      -l 0.0.0.0 
      -p 8181 
