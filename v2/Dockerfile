@@ -4,7 +4,7 @@ WORKDIR /opt
 RUN apt-get -y install \
         git \
         gcc \
-        g++=4.9.0
+        g++-4.9
 
 RUN git clone https://github.com/exsilium/cloud9 && \
     cd cloud9 && \
