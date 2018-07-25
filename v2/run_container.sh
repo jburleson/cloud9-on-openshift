@@ -52,3 +52,4 @@ find /home/user -type d -exec chmod g+x {} +
 
 # Clean up
 dnf clean all
+printf '{ "users": { "test": "test" }}' | tee /home/user/.ungitrc
