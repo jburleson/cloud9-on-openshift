@@ -2,7 +2,7 @@
 [![pipeline status](https://gitlab.com/sr229/cloud9-on-openshift/badges/master/pipeline.svg)](https://gitlab.com/sr229/cloud9-on-openshift/commits/master)
 [![CircleCI](https://circleci.com/gh/ClarityMoe/cloud9-on-openshift.svg?style=svg)](https://circleci.com/gh/ClarityMoe/cloud9-on-openshift)
 
-Cloud9 is a IDE created by Cloud9 IDE, Inc. (now owned wholly by Amazon Web Services) that uses HTML5 experience to deliver a
+Cloud9 is a IDE created by Cloud9 IDE, Inc. (now owned wholly by Amazon Web Services) that uses HTML5 technologies to deliver a
 coding experience in the cloud.
 
 The following Dockerfiles allow Cloud9 to work on OpenShift - as traditional images won't work on OpenShift due to some limitations
