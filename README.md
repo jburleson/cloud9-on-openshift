@@ -19,7 +19,7 @@ Currently, we structured the Cloud9 images based on the versions known: namely v
 
  - ``v2`` - This Cloud9 version is the GPL-licensed Cloud9 IDE before V3. It has officially ended it's development period during
             February 2015 and is the last known Cloud9 version that is GPL-Licensed. We use a 
-            [Community Maintenance fork](https://github.com/exsilium/cloud9)to provide us the same functionality albeit in a more
+            [Community Maintenance fork](https://github.com/exsilium/cloud9) to provide us the same functionality albeit in a more
             modern Node.js runtime (Node.js V8 LTS).
             
  - ``v3`` - This Cloud9 version is the current officially maintained [version](https://github.com/cloud9/core). It's only available
