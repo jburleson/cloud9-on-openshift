@@ -20,8 +20,10 @@ build_c9_v3:
 push_c9_v2:
   stage: push
   script:
+    - docker build -t chinodesuuu/c9:v2 ./v2
     - docker push chinodesuuu/c9:v2
 push_c9_v3:
   stage: push
   script:
+    - docker build -t chinodesuuu/c9:v3 ./v3
     - docker push chinodesuuu/c9:v3
