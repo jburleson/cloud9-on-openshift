@@ -1,5 +1,5 @@
 # Cloud9 Docker Images for OpenShift Online/OpenShift Dedicated/OCP/OpenShift Origin
-[![pipeline status](https://gitlab.com/sr229/c9/badges/master/pipeline.svg)](https://gitlab.com/sr229/cloud9-on-openshift/commits/master)
+[![pipeline status](https://gitlab.com/sr229/c9/badges/master/pipeline.svg)](https://gitlab.com/sr229/c9/commits/master)
 [![CircleCI](https://circleci.com/gh/ClarityMoe/cloud9-on-openshift.svg?style=svg)](https://circleci.com/gh/ClarityMoe/cloud9-on-openshift)
 
 Cloud9 is a IDE created by Cloud9 IDE, Inc. (now owned wholly by Amazon Web Services) that uses HTML5 technologies to deliver a
