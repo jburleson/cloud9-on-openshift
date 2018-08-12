@@ -22,7 +22,6 @@ dnf -y install \
     openssl-devel \
     bzip2-devel \
     sudo \
-    nss_wrapper \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
 
@@ -32,8 +31,13 @@ echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
 chmod 0440 /etc/sudoers.d/user
 
 # Ansible deployment
-curl -sSL https://github.com/gbraad/ansible-playbooks/raw/master/playbooks/install-c9sdk.yml -o /tmp/install.yml
-su - user -c "ansible-playbook /tmp/install.yml"
+# curl -sSL https://github.com/gbraad/ansible-playbooks/raw/master/playbooks/install-c9sdk.yml -o /tmp/install.yml
+# su - user -c "ansible-playbook /tmp/install.yml"
+
+git clone https://github.com/c9/core --depth=50 --bare /opt/app && \
+    cd /opt/app && \
+    su user -c "bash scripts/install-sdk.sh" && \
+    cd /;
 
 # Allow user installs in /opt as root
 chmod g+rw /opt
