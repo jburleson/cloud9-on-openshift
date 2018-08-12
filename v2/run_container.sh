@@ -45,7 +45,8 @@ chgrp root /opt
 
 # Create work directory
 mkdir -p /workspace
-chown user:root /workspace
+chown -R user:root /workspace
+chmod -R g+rw /workspace
 
 # allow to run on openshift
 chown -R user:root /opt/cloud9
