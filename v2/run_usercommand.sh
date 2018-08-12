@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [-z "$C9_PASSWORD" ] && [-z "$C9_USERNAME"]; then
+if [ -z "$C9_PASSWORD" ] && [ -z "$C9_USERNAME" ]; then
    echo "Starting Cloud9..."
    node cloud9/server.js -w /workspace -l 0.0.0.0 -p 8181 --username $C9_USERNAME --password $C9_PASSWORD;
 else
