@@ -36,7 +36,7 @@ chmod 0440 /etc/sudoers.d/user
 
 git clone https://github.com/c9/core --depth=50 --bare /opt/app && \
     cd /opt/app && \
-    su user -c "bash scripts/install-sdk.sh" && \
+    su - user -c "bash scripts/install-sdk.sh" && \
     cd /;
 
 # Allow user installs in /opt as root
@@ -48,8 +48,8 @@ mkdir -p /workspace
 chown user:root /workspace
 
 # allow to run on openshift
-chown -R user:root /opt/c9sdk
-chmod -R g+rw /opt/c9sdk
+chown -R user:root /opt/app
+chmod -R g+rw /opt/app
 chmod -R g+rw /home/user
 find /home/user -type d -exec chmod g+x {} +
 
