@@ -34,9 +34,9 @@ chmod 0440 /etc/sudoers.d/user
 # curl -sSL https://github.com/gbraad/ansible-playbooks/raw/master/playbooks/install-c9sdk.yml -o /tmp/install.yml
 # su - user -c "ansible-playbook /tmp/install.yml"
 cd /opt & \
-    git clone https://github.com/c9/core app && \
-    cd /opt/app && \
-    su - user -c "bash /opt/app/scripts/install-sdk.sh" && \
+    git clone https://github.com/c9/core && \
+    cd /opt/core && \
+    su - user -c "bash /opt/core/scripts/install-sdk.sh" && \
     cd /;
 
 # Allow user installs in /opt as root
@@ -49,8 +49,8 @@ chown -R user:root /workspace
 chmod -R g+rw /workspace
 
 # allow to run on openshift
-chown -R user:root /opt/app
-chmod -R g+rw /opt/app
+chown -R user:root /opt/core
+chmod -R g+rw /opt/core
 chmod -R g+rw /home/user
 find /home/user -type d -exec chmod g+x {} +
 
