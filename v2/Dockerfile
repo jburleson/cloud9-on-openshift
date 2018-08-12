@@ -27,8 +27,6 @@ ADD run_container.sh /tmp/
 RUN chmod +x /tmp/run_container.sh
 RUN /tmp/run_container.sh
 EXPOSE 8181
-ENV USERNAME ""
-ENV PASSWORD ""
 ENV HOME "/home/user/"
 ADD run_usercommand.sh /tmp/
 ADD entrypoint /home/user

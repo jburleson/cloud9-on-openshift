@@ -9,8 +9,8 @@ RUN /tmp/run_container.sh
 
 EXPOSE 8181
 
-ENV USERNAME ""
-ENV PASSWORD ""
+ENV C9_USERNAME ""
+ENV C9_PASSWORD ""
 ENV HOME "/home/user/"
 
 ADD run_usercommand.sh /tmp/
