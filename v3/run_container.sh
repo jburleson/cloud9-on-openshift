@@ -34,7 +34,7 @@ chmod 0440 /etc/sudoers.d/user
 # curl -sSL https://github.com/gbraad/ansible-playbooks/raw/master/playbooks/install-c9sdk.yml -o /tmp/install.yml
 # su - user -c "ansible-playbook /tmp/install.yml"
 cd /opt & \
-    git clone https://github.com/c9/core --depth=50 --bare app && \
+    git clone https://github.com/c9/core app && \
     cd /opt/app && \
     su - user -c "bash /opt/app/scripts/install-sdk.sh" && \
     cd /;
