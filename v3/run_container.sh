@@ -47,8 +47,8 @@ chown -R user:root /workspace
 chmod -R g+rw /workspace
 
 # allow to run on openshift
-chown -R user:root /opt/core
-chmod -R g+rw /opt/core
+chown -R user:root /opt/c9sdk
+chmod -R g+rw /opt/c9sdk
 chmod -R g+rw /home/user
 find /home/user -type d -exec chmod g+x {} +
 
