@@ -24,6 +24,10 @@ dnf -y install \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
     
+wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo && \
+     dnf -y update && \
+     dnf -y install cf-cli
+    
 # Add NVM for Node.js
 curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 

@@ -24,7 +24,10 @@ dnf -y install \
     sudo \
     gettext && \
     dnf group install "C Development Tools and Libraries" -y;
-
+    
+wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo && \
+     dnf -y update && \
+     dnf -y install cf-cli
 # Create user
 adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
 echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
