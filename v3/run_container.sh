@@ -19,6 +19,7 @@ dnf -y install \
     python3 \
     nodejs \
     clang \
+    nss_wrapper \
     openssl-devel \
     bzip2-devel \
     sudo \
