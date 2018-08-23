@@ -4,19 +4,21 @@ MAINTAINER Capuccino <chinodesuuu@gmail.com>
 # Use a script to configure the container. This way we can
 # split up the operations and do it all in a single layer.
 ADD run_container.sh /tmp/
-RUN chmod +x /tmp/run_container.sh
 RUN /tmp/run_container.sh
+
+VOLUME /workspace
+WORKDIR /workspace
 
 EXPOSE 8181
 
-ENV C9_USERNAME ""
-ENV C9_PASSWORD ""
+ENV USERNAME ""
+ENV PASSWORD ""
 ENV HOME "/home/user/"
 
-ADD run_usercommand.sh /tmp/
-RUN chmod +x /tmp/run_usercommand.sh
 
-VOLUME ["/workspace"]
+ADD passwd_template /tmp/
+ADD run_usercommand.sh /tmp/
+
 USER 1000
 CMD ["/tmp/run_usercommand.sh"]
 
