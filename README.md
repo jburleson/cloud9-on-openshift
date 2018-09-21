@@ -22,7 +22,7 @@ Currently, we structured the Cloud9 images based on the versions known: namely v
             [Community Maintenance fork](https://github.com/exsilium/cloud9) to provide us the same functionality albeit in a more
             modern Node.js runtime (Node.js V8 LTS).
             
- - ``v3`` - This Cloud9 version is the current officially maintained [version](https://github.com/cloud9/core). It's only available
+ - ``v3`` - This Cloud9 version is the current officially maintained [version](https://github.com/c9/core). It's only available
             For plugin development and non-commercial usage. It's currently now named as AWS Cloud9 after being bought by Amazon Inc.
 
 ## Installing
