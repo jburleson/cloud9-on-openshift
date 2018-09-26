@@ -11,6 +11,7 @@ dnf -y install \
     wget \
     curl \
     tar \
+    unzip \
     python2-dnf \
     ansible \
     make \
