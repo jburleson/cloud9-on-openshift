@@ -9,6 +9,8 @@ dnf -y install "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-relea
 dnf -y update && \
 dnf -y install \
     wget \
+    curl \
+    tar \
     python2-dnf \
     ansible \
     make \
