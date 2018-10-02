@@ -17,6 +17,7 @@ dnf -y install \
     make \
     cmake \
     git \
+    gettext \
     which \
     python2 \
     python3 \
@@ -25,8 +26,7 @@ dnf -y install \
     nss_wrapper \
     openssl-devel \
     bzip2-devel \
-    sudo \
-    gettext && \
+    sudo && \
     dnf group install "C Development Tools and Libraries" -y;
     
 wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo && \
