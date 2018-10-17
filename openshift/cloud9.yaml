@@ -1,0 +1,178 @@
+kind: Template
+apiVersion: v1
+labels:
+  app: ${NAME}
+  template: ${NAME}
+metadata:
+  name: cloud9-template
+  openshift.io/display-name: "Cloud9 IDE"
+  description: >-
+    Cloud9 IDE template. 
+    
+    WARNING: Any data stored will be lost upon pod destruction.
+  openshift.io/long-description: >-
+    Cloud9 IDE template. 
+    
+    WARNING: Any data stored will be lost upon pod destruction.
+  tags: "ide,programming"
+  iconClass: "fas fa-code"
+  openshift.io/provider-display-name: "A-State Computer Science Department"
+message: "The following service(s) have been created in your project: ${NAME}."
+objects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: ${NAME}
+      annotations:
+        description: "Exposes and load balances the application pods",    
+    spec:
+      ports:
+        - name: web
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
+      selector:
+        name: ${NAME}
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: ${NAME}
+    spec:
+      host: ${APPLICATION_DOMAIN}
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: ${NAME}
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      name: ${APPLICATION_IMAGE_NAME}
+      annotations: 
+        description: "Keeps track of changes in the application image"
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      name: ${NAME}
+      annotations:
+        description: Defines how to build the application
+        template.alpha.openshift.io/wait-for-ready: true
+    spec:
+      source:
+        type: Git
+        git:
+          uri: ${SOURCE_REPOSITORY_URL}
+          ref: ${SOURCE_REPOSITORY_REF}
+        contextDir: ${CONTEXT_DIR}
+      output:
+        to:
+          kind: ImageStream
+          name: ${APPLICATION_IMAGE_NAME}:${APPLICATION_IMAGE_TAG}
+      strategy:
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            name: ${APPLICATION_IMAGE_NAME}:${APPLICATION_IMAGE_TAG}
+            namespace: ${NAMESPACE}
+        type: source
+    triggers:
+      - type: ImageChange
+      - type: ConfigChange
+      - type: Github
+        github:
+          secret: ${GITHUB_WEBHOOK_SECRET}
+      - type: Generic
+        generic:
+          secret: ${GENERIC_WEBHOOK_SECRET}
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: ${NAME}
+      annotations:
+        description: Defines how to deploy the application server.
+        template.alpha.openshift.io/wait-for-ready: true
+    spec:
+      replicas: 1
+      selector: ${NAME}
+      strategy:
+        type: Rolling
+      template:
+        metadata:
+          labels:
+            name: ${NAME}
+          name: ${NAME}
+        spec:
+          containers:
+            env: []
+            image: " "
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 8080
+              initialDelaySeconds: 30
+              timeoutSeconds: 3
+            name: ${NAME}
+            ports:
+              containerPort: 8080
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 8080
+              initialDelaySeconds: 3
+              timeoutSeconds: 3
+      triggers:
+        - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - ${NAME}
+          from:
+            kind: ImageStreamTag
+            name: ${APPLICATION_IMAGE_NAME}:${APPLICATION_IMAGE_TAG}
+        - type: ConfigChange
+parameters:
+  - name: NAME
+    displayName: Name
+    description: "The name assigned to all of the frontend objects defined in this template."
+    required: true
+    value: cloud9
+  - name: NAMESPACE
+    description: "The OpenShift Namespace where the ImageStream resides."
+    displayName: Namespace
+    required: true
+    value: openshift
+  - name: APPLICATION_IMAGE_NAME
+    displayName: Docker Image Name
+    description: "The name of the docker image."
+    required: true
+    value: cloud9-on-openshift    
+  - name: APPLICATION_IMAGE_TAG
+    displayName: Docker Image Tag
+    description: "The name of the docker image tag."
+    required: true
+    value: latest      
+  - name: SOURCE_REPOSITORY_URL   
+    description: "The URL of the repository with your application source code."
+    displayName: Git Repository URL
+    required: true
+    value: https://github.com/jburleson/cloud9-on-openshift.git
+  - name: SOURCE_REPOSITORY_REF
+    description: "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
+    displayName: Git Reference
+  - name: CONTEXT_DIR        
+    description: "Set this to the relative path to your project if it is not in the root of your repository."
+    displayName: Context Directory
+  - name: APPLICATION_DOMAIN      
+    description: "The exposed hostname that will route to the Node.js service, if left blank a value will be defaulted."
+    displayName: Application Hostname
+    value: ""
+  - name: GITHUB_WEBHOOK_SECRET
+    description: "Github trigger secret.  A difficult to guess string encoded as part of the webhook URL.  Not encrypted."
+    displayName: GitHub Webhook Secret
+    from: "[a-zA-Z0-9]{40}"
+    generate: expression
+  - name: GENERIC_WEBHOOK_SECRET
+    description: "A secret string used to configure the Generic webhook."
+    displayName: Generic Webhook Secret
+    from: "[a-zA-Z0-9]{40}"
+    generate: expression
