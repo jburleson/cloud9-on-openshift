@@ -1,4 +1,4 @@
-Based on ClarityMoe's Cloud9 v3(https://github.com/ClarityMoe/cloud9-on-openshift).
+Based on [ClarityMoe's Cloud9 v3](https://github.com/ClarityMoe/cloud9-on-openshift).
 
 # Cloud9 Docker Images for OpenShift Online/OpenShift Dedicated/OCP/OpenShift Origin
 [![pipeline status](https://gitlab.com/sr229/c9/badges/master/pipeline.svg)](https://gitlab.com/sr229/c9/commits/master)
