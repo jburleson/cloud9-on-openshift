@@ -1,0 +1,75 @@
+kind: Template
+apiVersion: v1
+labels:
+  app: cloud9
+  template: cloud9
+metadata:
+  name: cloud9
+  annotations:
+    openshift.io/display-name: "Cloud9 IDE"
+    description: "Cloud9 IDE template.\n\nWARNING: Any data stored will be lost upon pod destruction."
+    openshift.io/long-description: "Cloud9 IDE template.\n\nWARNING: Any data stored will be lost upon pod destruction."
+    tags: "ide,programming"
+    iconClass: "fa fa-code"
+    openshift.io/provider-display-name: "A-State Computer Science Department"
+message: "The following service(s) have been created in your project: ${NAME}."
+objects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: cloud9-host  
+    spec:
+      ports:
+        - name: http
+          port: 8181
+          protocol: TCP
+          targetPort: 8181
+      selector:
+        name: cloud9
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: cloud9
+    spec:
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: cloud9-host 
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: cloud9
+    spec:
+      replicas: 1
+      selector: 
+        app: cloud9
+      strategy:
+        type: Rolling
+      template:
+        metadata:
+          labels:
+            app: cloud9
+        spec:
+          containers:
+            - env:
+              image: 'jburleson/cloud9-on-openshift:latest'
+              imagePullPolicy: IfNotPresent
+              livenessProbe:
+                httpGet:
+                  path: /
+                  port: 8181
+                initialDelaySeconds: 30
+                timeoutSeconds: 3
+              name: cloud9
+              ports:
+                - containerPort: 8181
+                  protocol: TCP
+              readinessProbe:
+                httpGet:
+                  path: /
+                  port: 8181
+                initialDelaySeconds: 3
+                timeoutSeconds: 3
+      triggers:
+        - type: ConfigChange
