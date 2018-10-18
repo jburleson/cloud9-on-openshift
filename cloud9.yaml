@@ -54,7 +54,7 @@ objects:
           containers:
             - env:
               image: 'jburleson/cloud9-on-openshift:latest'
-              imagePullPolicy: IfNotPresent
+              imagePullPolicy: Always 
               livenessProbe:
                 httpGet:
                   path: /
