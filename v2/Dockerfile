@@ -19,7 +19,7 @@ RUN git clone https://github.com/pylonide/pylon cloud9 && \
 
 # run layer
 FROM fedora:27
-MAINTAINER Capuccino <chinodesuuu@gmail.com>
+MAINTAINER jburleson <jburleson@astate.edu>
 
 COPY --from=build /opt/cloud9 /opt/cloud9
 COPY --from=build /opt/cloud9-plugin-ungit /opt/cloud9-plugin-ungit
@@ -44,11 +44,3 @@ USER 10001
 WORKDIR /opt
 ENTRYPOINT ["/home/user/entrypoint"]
 CMD ["/tmp/run_usercommand.sh"]
-
-# Labels for Kubernetes, OpenShift and Atomic
-LABEL io.k8s.description="A powerful IDE for the cloud under your control! C9 SDK based on CentOS, Fedora or Ubuntu" \
-      io.k8s.display-name="Cloud9 IDE" \
-      io.openshift.expose-services="8181:http" \
-      io.openshift.tags="ide,development" \
-      io.projectatomic.nulecule.environment.optional="USERNAME, PASSWORD" \
-      io.projectatomic.nulecule.volume.data="/workspace,1Gi"
